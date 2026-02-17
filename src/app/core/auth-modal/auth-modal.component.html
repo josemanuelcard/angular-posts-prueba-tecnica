@@ -1,0 +1,73 @@
+<ng-container *ngIf="state$ | async as state">
+  <div *ngIf="state.open" class="auth-modal" role="dialog" aria-modal="true">
+    <div class="auth-modal__overlay" (click)="close()"></div>
+    <div class="auth-modal__card">
+      <button type="button" class="auth-modal__close" aria-label="Cerrar" (click)="close()">
+        ×
+      </button>
+
+      <ng-container *ngIf="state.mode === 'login'">
+        <h2 class="auth-modal__title">Iniciar sesión</h2>
+        <p class="auth-modal__subtitle">Accede para continuar con tu compra.</p>
+        <form class="auth-modal__form">
+          <div class="mb-3">
+            <label class="form-label" for="modalEmail">Email</label>
+            <input
+              id="modalEmail"
+              type="email"
+              class="form-control"
+              placeholder="tucorreo@cine.com"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="modalPassword">Contraseña</label>
+            <input id="modalPassword" type="password" class="form-control" placeholder="********" />
+          </div>
+          <button type="button" class="btn btn-cinemark w-100">Ingresar</button>
+        </form>
+        <p class="auth-modal__hint">
+          ¿No tienes cuenta?
+          <button type="button" class="auth-modal__link" (click)="switchToRegister()">
+            Crear cuenta
+          </button>
+        </p>
+      </ng-container>
+
+      <ng-container *ngIf="state.mode === 'register'">
+        <h2 class="auth-modal__title">Crear cuenta</h2>
+        <p class="auth-modal__subtitle">Regístrate para acceder a beneficios y promociones.</p>
+        <form class="auth-modal__form">
+          <div class="mb-3">
+            <label class="form-label" for="modalName">Nombre completo</label>
+            <input id="modalName" type="text" class="form-control" placeholder="Tu nombre" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="modalEmailRegister">Email</label>
+            <input
+              id="modalEmailRegister"
+              type="email"
+              class="form-control"
+              placeholder="tucorreo@cine.com"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="modalPasswordRegister">Contraseña</label>
+            <input
+              id="modalPasswordRegister"
+              type="password"
+              class="form-control"
+              placeholder="********"
+            />
+          </div>
+          <button type="button" class="btn btn-cinemark w-100">Crear cuenta</button>
+        </form>
+        <p class="auth-modal__hint">
+          ¿Ya tienes cuenta?
+          <button type="button" class="auth-modal__link" (click)="switchToLogin()">
+            Iniciar sesión
+          </button>
+        </p>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

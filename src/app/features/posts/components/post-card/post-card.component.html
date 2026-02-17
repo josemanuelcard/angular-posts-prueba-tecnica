@@ -1,0 +1,33 @@
+<ng-container [ngSwitch]="variant">
+  <div *ngSwitchCase="'horizontal'" class="card h-100 shadow-sm post-card post-card--horizontal">
+    <div class="post-card__hero">
+      <img
+        class="post-card__hero-img"
+        [src]="getImageUrl('horizontal')"
+        [alt]="post.title"
+        referrerpolicy="no-referrer"
+        (error)="onImageError($event)"
+      />
+      <div class="post-card__overlay">
+        <p class="text-uppercase small mb-1">Categoría #{{ post.userId }}</p>
+        <h5 class="card-title mb-3" [title]="post.title">{{ post.title }}</h5>
+        <a class="btn btn-light btn-sm" [routerLink]="['/posts', post.id]">Ver</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngSwitchDefault class="card h-100 shadow-sm post-card post-card--vertical">
+    <img
+      class="card-img-top"
+      [src]="getImageUrl('vertical')"
+      [alt]="post.title"
+      loading="lazy"
+      referrerpolicy="no-referrer"
+      (error)="onImageError($event)"
+    />
+    <div class="post-card__hover">
+      <a class="btn btn-danger btn-sm" [routerLink]="['/posts', post.id]">Ver más</a>
+    </div>
+  </div>
+</ng-container>
+

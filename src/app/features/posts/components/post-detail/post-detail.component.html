@@ -1,0 +1,109 @@
+<section *ngIf="loading" class="text-center py-5">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+</section>
+
+<section *ngIf="errorMessage && !loading" class="alert alert-danger">
+  {{ errorMessage }}
+</section>
+
+<section *ngIf="post && !loading" class="post-detail">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-12 col-lg-8">
+        <div class="post-detail__panel">
+          <h2 class="post-detail__title">{{ post.title }}</h2>
+          <p class="post-detail__subtitle">El musical que conmueve al mundo</p>
+          <div class="post-detail__meta">
+            <span>📌 Categoría: Usuario #{{ post.userId }}</span>
+            <span>📍 Donde: Madrid, Teatro Lope de Vega</span>
+          </div>
+        </div>
+
+        <div class="post-detail__stats">
+          <div>
+            <p class="post-detail__label">Duración</p>
+            <p>2:45h con descanso</p>
+          </div>
+          <div>
+            <p class="post-detail__label">Apertura de puertas</p>
+            <p>Media hora antes</p>
+          </div>
+          <div>
+            <p class="post-detail__label">Idioma</p>
+            <p>Español</p>
+          </div>
+          <div>
+            <p class="post-detail__label">Edad mínima</p>
+            <p>Recomendado para mayores de 6 años</p>
+          </div>
+        </div>
+
+        <div class="post-detail__tabs">
+          <button type="button" class="btn btn-link active">Descripción</button>
+          <button type="button" class="btn btn-link">Ficha artística</button>
+          <button type="button" class="btn btn-link">Info evento</button>
+        </div>
+
+        <div class="post-detail__content">
+          <p>{{ post.body }}</p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="post-detail__poster">
+          <img
+            *ngIf="post.photo?.url; else noImage"
+            [src]="post.photo?.url"
+            [alt]="post.title"
+            referrerpolicy="no-referrer"
+          />
+          <ng-template #noImage>
+            <div class="post-detail__placeholder">Imagen no disponible</div>
+          </ng-template>
+          <button type="button" class="btn btn-danger w-100 mt-2">Comprar entradas</button>
+        </div>
+        <div class="post-detail__promo mt-3">
+          <p class="mb-1 fw-semibold">Promociones</p>
+          <p class="mb-0">20% de descuento al comprar dos o más entradas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="relatedPosts.length > 0" class="related-posts">
+  <div class="container">
+    <div class="related-head mb-3">
+      <h2 class="section-title mb-0">Películas relacionadas</h2>
+      <div class="cards-strip__nav-row">
+        <button type="button" class="cards-strip__nav" aria-label="Anterior">
+          &lt;
+        </button>
+        <button type="button" class="cards-strip__nav" aria-label="Siguiente">
+          &gt;
+        </button>
+      </div>
+    </div>
+    <div class="cards-strip-wrap">
+      <div class="cards-strip cards-strip--movies">
+        <div class="cards-strip__item" *ngFor="let item of relatedPosts">
+          <div class="related-card">
+          <div class="related-card__media">
+            <img
+              *ngIf="item.photo?.url; else relatedFallback"
+              [src]="item.photo?.url"
+              [alt]="item.title"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+            <ng-template #relatedFallback>
+              <div class="related-card__fallback">Imagen no disponible</div>
+            </ng-template>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

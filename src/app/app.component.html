@@ -1,0 +1,84 @@
+<app-menu (aboutClick)="showAboutSection()"></app-menu>
+
+<main class="container pb-4 pt-0" *ngIf="!showAboutOnly">
+  <router-outlet></router-outlet>
+</main>
+
+<section class="benefits" *ngIf="!showAboutOnly">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-12 col-md-4">
+        <div class="benefits__icon">
+          <img src="assets/images/ticket.png" alt="Ticket" />
+        </div>
+        <h6 class="benefits__title">EL MEJOR OCIO DE MADRID</h6>
+        <p class="benefits__text">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam, eaque ipsa.
+        </p>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="benefits__icon">
+          <img src="assets/images/oferta.png" alt="Oferta" />
+        </div>
+        <h6 class="benefits__title">LAS MEJORES OFERTAS</h6>
+        <p class="benefits__text">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam, eaque ipsa.
+        </p>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="benefits__icon">
+          <img src="assets/images/filtrar.png" alt="Filtrar" />
+        </div>
+        <h6 class="benefits__title">FILTRA Y ENCUENTRA</h6>
+        <p class="benefits__text">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam, eaque ipsa.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conocenos" class="about-cinemark" *ngIf="showAboutOnly">
+  <div class="container">
+    <span class="about-cinemark__eyebrow">Vive el cine como nunca</span>
+    <h2 class="about-cinemark__title">CINEMARK</h2>
+    <p class="about-cinemark__text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <div class="about-cinemark__actions">
+      <button
+        type="button"
+        class="btn btn-danger about-cinemark__cta"
+        (click)="showMainContent()"
+      >
+        Ver cartelera
+      </button>
+      <button type="button" class="btn btn-outline-danger about-cinemark__cta-outline">
+        Conoce nuestros formatos
+      </button>
+    </div>
+    <div class="about-cinemark__highlights">
+      <div class="about-cinemark__card">
+        <h6>Experiencia Premium</h6>
+        <p>Salas con sonido envolvente, butacas reclinables y pantalla gigante.</p>
+      </div>
+      <div class="about-cinemark__card">
+        <h6>Promos todas las semanas</h6>
+        <p>Ofertas exclusivas en entradas y confitería.</p>
+      </div>
+      <div class="about-cinemark__card">
+        <h6>Ubicaciones top</h6>
+        <p>Encuentra tu Cinemark favorito cerca de ti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer *ngIf="!showAboutOnly"></app-footer>
+<app-auth-modal></app-auth-modal>
+

@@ -1,1 +1,19 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+
+body {
+  background-color: #f8f9fa;
+  font-family: 'Oswald', Arial, sans-serif;
+}
+
+.btn,
+.form-control,
+.form-select,
+.card,
+.alert,
+.navbar,
+.dropdown-menu,
+.input-group-text {
+  border-radius: 0 !important;
+}
 /* You can add global styles to this file, and also import other style files */

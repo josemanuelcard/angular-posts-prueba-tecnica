@@ -1,0 +1,233 @@
+<section class="search-hero mb-4">
+  <img class="search-hero__bg" [src]="heroImageUrl" alt="" aria-hidden="true" />
+  <div class="search-hero__overlay"></div>
+  <button
+    type="button"
+    class="search-hero__nav search-hero__nav--prev"
+    aria-label="Anterior"
+    (click)="prevHero()"
+  >
+    ‹
+  </button>
+  <button
+    type="button"
+    class="search-hero__nav search-hero__nav--next"
+    aria-label="Siguiente"
+    (click)="nextHero()"
+  >
+    ›
+  </button>
+  <div class="container position-relative">
+    <div class="search-hero__content text-white">
+      <p class="text-uppercase small mb-2">Eventos destacados</p>
+      <h1 class="display-5 fw-semibold mb-3">Explora publicaciones</h1>
+      <p class="lead mb-4">Encuentra rápidamente publicaciones por título o usuario.</p>
+    </div>
+
+    <form
+      [formGroup]="filterForm"
+      class="search-hero__form bg-white shadow-sm rounded-3 p-3 p-md-4 row g-3 align-items-end position-relative"
+    >
+      <div class="col-12 col-lg-4">
+        <label for="titleInput" class="form-label">Película / título</label>
+        <input
+          id="titleInput"
+          type="text"
+          class="form-control"
+          formControlName="title"
+          placeholder="Ej: Oppenheimer"
+        />
+      </div>
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label for="cinemaInput" class="form-label">Cine</label>
+        <input
+          id="cinemaInput"
+          type="text"
+          class="form-control"
+          formControlName="cinema"
+          placeholder="Ej: Cinemark"
+        />
+      </div>
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label for="dateInput" class="form-label">Fecha</label>
+        <input
+          id="dateInput"
+          type="date"
+          class="form-control"
+          formControlName="date"
+        />
+      </div>
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label for="timeInput" class="form-label">Horario</label>
+        <input
+          id="timeInput"
+          type="time"
+          class="form-control"
+          formControlName="time"
+        />
+      </div>
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label for="formatSelect" class="form-label">Formato</label>
+        <select id="formatSelect" class="form-select" formControlName="format">
+          <option value="">Todos</option>
+          <option value="1">2D</option>
+          <option value="2">3D</option>
+          <option value="3">IMAX</option>
+          <option value="4">4DX</option>
+        </select>
+      </div>
+      <div class="col-12 d-grid gap-2">
+        <button type="button" class="btn btn-cinemark">Buscar</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm" (click)="clearFilters()">
+          Limpiar
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section *ngIf="loading" class="text-center py-5">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+</section>
+
+<section *ngIf="errorMessage && !loading" class="alert alert-danger">
+  {{ errorMessage }}
+</section>
+
+<section *ngIf="!loading && !errorMessage">
+  <div *ngIf="filteredPosts.length === 0" class="alert alert-warning">
+    No se encontraron resultados con los filtros actuales.
+  </div>
+
+  <div *ngIf="filteredPosts.length > 0 && !isSearchResult" class="cards-section cards-section--horizontal">
+    <div class="section-head mb-3">
+      <h2 class="section-title mb-0">Películas más taquilleras</h2>
+      <div class="section-actions">
+        <div class="cards-strip__nav-row">
+          <button
+            type="button"
+            class="cards-strip__nav cards-strip__nav--prev"
+            aria-label="Anterior"
+            (click)="prevHorizontalPage()"
+          >
+            &lt;
+          </button>
+          <button
+            type="button"
+            class="cards-strip__nav cards-strip__nav--next"
+            aria-label="Siguiente"
+            (click)="nextHorizontalPage()"
+          >
+            &gt;
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="cards-strip-wrap">
+      <div class="row g-4 flex-grow-1">
+        <div class="col-12 col-md-4" *ngFor="let post of horizontalPosts">
+          <app-post-card [post]="post" variant="horizontal"></app-post-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="filteredPosts.length > 0" class="cards-section">
+    <div class="section-head mb-3">
+      <h2 class="section-title mb-0">
+        {{ isSearchResult ? 'RESULTADO DE BUSQUEDA' : 'Películas que te podrían gustar' }}
+      </h2>
+      <div class="section-actions">
+        <div class="cards-strip__nav-row">
+          <button
+            type="button"
+            class="cards-strip__nav cards-strip__nav--prev"
+            aria-label="Anterior"
+            (click)="prevVerticalPage()"
+          >
+            &lt;
+          </button>
+          <button
+            type="button"
+            class="cards-strip__nav cards-strip__nav--next"
+            aria-label="Siguiente"
+            (click)="nextVerticalPage()"
+          >
+            &gt;
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="cards-strip-wrap">
+      <div class="cards-strip cards-strip--movies">
+        <div class="cards-strip__item" *ngFor="let post of verticalPosts">
+          <app-post-card [post]="post" variant="vertical"></app-post-card>
+        </div>
+      </div>
+    </div>
+    <div class="section-link-row">
+      <a class="section-link" href="javascript:void(0)">Ver todos</a>
+    </div>
+  </div>
+
+  <div class="cards-section">
+    <div class="section-head mb-3">
+      <h2 class="section-title mb-0">Actores más reconocidos</h2>
+      <div class="section-actions">
+        <div class="cards-strip__nav-row">
+          <button
+            type="button"
+            class="cards-strip__nav cards-strip__nav--prev"
+            aria-label="Anterior"
+            (click)="prevActorsPage()"
+          >
+            &lt;
+          </button>
+          <button
+            type="button"
+            class="cards-strip__nav cards-strip__nav--next"
+            aria-label="Siguiente"
+            (click)="nextActorsPage()"
+          >
+            &gt;
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="actorsLoading" class="text-muted mb-3">Cargando actores...</div>
+    <div *ngIf="!actorsLoading && actorsError" class="alert alert-warning">
+      {{ actorsError }}
+    </div>
+    <div class="cards-strip-wrap">
+      <div class="cards-strip cards-strip--square">
+        <div class="cards-strip__item" *ngFor="let actor of actorCards">
+          <div class="actor-card">
+            <img [src]="actor.imageUrl" [alt]="actor.name" />
+            <p class="actor-card__name">{{ actor.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-link-row">
+      <a class="section-link" href="javascript:void(0)">Ver todos</a>
+    </div>
+  </div>
+
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter__content">
+        <h3 class="newsletter__title">Suscríbete con Cinemark y obtén beneficios</h3>
+        <p class="newsletter__subtitle">
+          Déjanos tu email y te informaremos sobre las mejores promociones de nuestra cartelera.
+        </p>
+        <form class="newsletter__form">
+          <input type="email" class="form-control" placeholder="Escribe tu email" />
+          <button type="button" class="btn btn-cinemark">Suscribirme</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</section>
+

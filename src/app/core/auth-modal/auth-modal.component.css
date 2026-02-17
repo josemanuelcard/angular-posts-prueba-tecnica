@@ -1,0 +1,78 @@
+.auth-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1055;
+}
+
+.auth-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.auth-modal__card {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 92vw);
+  background: #fff;
+  padding: 2rem;
+  border: 1px solid #e5e5e5;
+}
+
+.auth-modal__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  border: 0;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.auth-modal__title {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.auth-modal__subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-modal__hint {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.auth-modal__link {
+  background: none;
+  border: 0;
+  color: #d40000;
+  font-weight: 600;
+  padding: 0;
+  margin-left: 0.25rem;
+}
+
+.auth-modal .btn-cinemark {
+  background-color: #d40000;
+  border-color: #d40000;
+  color: #fff;
+}
+
+.auth-modal .btn-cinemark:hover,
+.auth-modal .btn-cinemark:focus {
+  background-color: #b00000;
+  border-color: #b00000;
+  color: #fff;
+}
+
+@media (max-width: 576px) {
+  .auth-modal__card {
+    padding: 1.5rem;
+  }
+}

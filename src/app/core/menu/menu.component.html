@@ -1,0 +1,159 @@
+<div class="topbar py-1">
+  <div class="container d-flex align-items-center gap-3">
+    <div class="d-flex align-items-center gap-2">
+      <a class="topbar__icon" href="javascript:void(0)" aria-label="Facebook">
+        <img src="assets/images/facebook.png" alt="Facebook" />
+      </a>
+      <a class="topbar__icon" href="javascript:void(0)" aria-label="Instagram">
+        <img src="assets/images/instagram.png" alt="Instagram" />
+      </a>
+      <a class="topbar__icon" href="javascript:void(0)" aria-label="X">
+        <img src="assets/images/x.png" alt="X" />
+      </a>
+    </div>
+    <div class="topbar__links">
+      <div class="topbar__nav d-flex align-items-center gap-3">
+        <a class="topbar__link" href="#conocenos" (click)="openAbout($event)">Conócenos</a>
+        <div class="dropdown">
+          <a
+            class="topbar__link dropdown-toggle"
+            href="javascript:void(0)"
+            id="formatsDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Formatos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="formatsDropdown">
+            <li><span class="dropdown-item-text">2D / 3D</span></li>
+            <li><span class="dropdown-item-text">IMAX / 4DX</span></li>
+            <li><span class="dropdown-item-text">Salas Premium</span></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <a
+            class="topbar__link dropdown-toggle"
+            href="javascript:void(0)"
+            id="businessDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Marketing empresarial
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="businessDropdown">
+            <li><span class="dropdown-item-text">Activaciones de marca.</span></li>
+            <li><span class="dropdown-item-text">Eventos corporativos.</span></li>
+            <li><span class="dropdown-item-text">Publicidad en salas.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="topbar__actions d-flex align-items-center gap-2">
+        <button type="button" class="btn topbar__btn topbar__btn--dark btn-sm" (click)="openRegister()">
+          Crear cuenta
+        </button>
+        <button type="button" class="btn topbar__btn topbar__btn--red btn-sm" (click)="openLogin()">
+          Iniciar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/posts">CINEMARK</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/posts" routerLinkActive="active">Cartelera</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="javascript:void(0)"
+            id="theatersDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Teatros
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="theatersDropdown">
+            <li><a class="dropdown-item" href="javascript:void(0)">Cinemark Centro</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Cinemark Norte</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Cinemark Sur</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Cinemark Premium</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="javascript:void(0)"
+            id="snacksDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Confitería
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="snacksDropdown">
+            <li><a class="dropdown-item" href="javascript:void(0)">Combos</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Bebidas</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Snacks</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Postres</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="javascript:void(0)"
+            id="promoDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Promociones
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="promoDropdown">
+            <li><a class="dropdown-item" href="javascript:void(0)">2x1</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Día del espectador</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Cupones</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Tarjetas regalo</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="javascript:void(0)"
+            id="ticketsDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Tiquetera
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="ticketsDropdown">
+            <li><a class="dropdown-item" href="javascript:void(0)">Comprar entradas</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Mis entradas</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Tarifas</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)">Salas VIP</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

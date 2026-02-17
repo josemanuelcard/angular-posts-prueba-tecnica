@@ -1,0 +1,163 @@
+.topbar {
+  background-color: #f1f1f1;
+  font-size: 0.75rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.topbar__links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.topbar__link {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.topbar__link:hover,
+.topbar__link:focus {
+  color: #111;
+}
+
+.topbar .dropdown-menu {
+  min-width: 220px;
+}
+
+.topbar .dropdown-item-text {
+  font-size: 0.8rem;
+  color: #444;
+  white-space: normal;
+}
+
+.topbar__links {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar__nav {
+  flex: 1;
+  justify-content: center;
+}
+
+.topbar__icon {
+  width: 26px;
+  height: 26px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  text-decoration: none;
+}
+
+.topbar__icon img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.topbar__btn {
+  border-radius: 999px !important;
+  padding: 0.35rem 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.topbar__btn--dark {
+  background-color: #2e2e2e;
+  color: #fff !important;
+  border-color: #2e2e2e;
+}
+
+.topbar__btn--red {
+  background-color: #d40000;
+  color: #fff !important;
+  border-color: #d40000;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  color: #d40000;
+  letter-spacing: 0.1rem;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: #b00000;
+}
+
+.navbar {
+  margin-bottom: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.nav-link {
+  color: #b00000;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.03rem;
+}
+
+.dropdown-menu {
+  border-radius: 0;
+  border-color: #e2e2e2;
+  font-size: 0.8rem;
+}
+
+.dropdown-item {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.nav-link--pill {
+  background-color: #1b1b1b;
+  color: #fff !important;
+  padding: 0.35rem 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    display: block;
+  }
+
+  .topbar__links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .topbar__nav {
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .topbar__actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+  }
+
+  .navbar-nav {
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
+}
